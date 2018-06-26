@@ -1,6 +1,7 @@
 #splitscreen > .section .column-left {
     float: left;
     width: 50%;
+    height: 100%;
     color: #000;
     background: #fff;
   }
@@ -8,6 +9,7 @@
   #splitscreen > .section .column-right {
     float: right;
     width: 50%;
+    height: 100%;
     color: #fff;
     background: #000;
   }
