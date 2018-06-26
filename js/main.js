@@ -1,3 +1,3 @@
 $(document).ready(function() {
-	$('#splitscreen').fullpage();
+	$('#splitscreen').fullpage({verticalCentered: false});
 });

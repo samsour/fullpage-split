@@ -1,60 +1,55 @@
-#splitscreen > .section .column-left {
-    float: left;
-    width: 50%;
-    height: 100%;
-    color: #000;
-    background: #fff;
-  }
-   
-  #splitscreen > .section .column-right {
-    float: right;
-    width: 50%;
-    height: 100%;
-    color: #fff;
-    background: #000;
-  }
-   
-  #splitscreen > .section .column-left {
-    transition: all 1s ease 0s;
-    transform: translateY(100%);
-    backface-visibility: hidden;
-  }
-   
-  #splitscreen > .section .column-right {
-    transition: all 1s ease 0s;
-    transform: translateY(-100%);
-    backface-visibility: hidden;
-  }
-   
-  #splitscreen > .section.active {
-    z-index: 1;
-  }
-   
-  #splitscreen > .section.active .column-left {
-    transform: translateY(0);
-  }
-   
-  #splitscreen > .section.active .column-right {
-    transform: translateY(0);
-  }
-   
-  #splitscreen > .section.active ~ .section .column-left {
-    transform: translateY(-100%);
-  }
-   
-  #splitscreen > .section.active ~ .section .column-right {
-    transform: translateY(100%);
-  }
-   
-  /* prevent fullpage from translating the page */
-  #splitscreen {
+#splitscreen {
     transform: translate3d(0px, 0px, 0px) !important;
   }
-   
+
   #splitscreen > .section {
+    display: flex;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    display: flex;
+    counter-reset: section;
+  }
+
+  #splitscreen > .section.active {
+    z-index: 1;
+  }
+
+  #splitscreen > .section__counter::before {
+    counter-increment: section;
+    content: "Section " counter(section) ": ";
+  }
+
+  #splitscreen > .section .section__half--left, #splitscreen > .section .section__half--right {
+    flex: 1;
+    backface-visibility: hidden;
+    transition: all 1s ease 0s;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+  }
+
+#splitscreen > .section .section__half--left {
+    color: #000;
+    background: #fff;
+    transform: translateY(100%);
+    
+  }
+   
+  #splitscreen > .section .section__half--right {
+    color: #fff;
+    background: #000;
+    transform: translateY(-100%);
+  }
+   
+  #splitscreen > .section.active .section__half--left, #splitscreen > .section.active .section__half--right  {
+    transform: translateY(0);
+  }
+   
+  #splitscreen > .section.active ~ .section .section__half--left {
+    transform: translateY(-100%);
+  }
+   
+  #splitscreen > .section.active ~ .section .section__half--right {
+    transform: translateY(100%);
   }
