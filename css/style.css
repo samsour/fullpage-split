@@ -13,6 +13,7 @@ body {
 
   #splitscreen > .section {
     display: flex;
+    flex-wrap: wrap-reverse;
     width: 100%;
     position: absolute;
     top: 0;
@@ -31,17 +32,17 @@ body {
     font-size: 50px;
   }
 
-  #splitscreen > .section .section__half--light, #splitscreen > .section .section__half--dark {
+  #splitscreen > .section .section__half {
     flex: 1;
     backface-visibility: hidden;
     transition: all 1s ease 0s;
     display: inherit;
     align-items: center;
     justify-content: center;
+    min-width: 300px;
   }
 
 #splitscreen > .section .section__half--light {
-    color: #000;
     background: #fff;
     transform: translateY(100%);
     
@@ -56,11 +57,13 @@ body {
   #splitscreen > .section.active .section__half--light, #splitscreen > .section.active .section__half--dark  {
     transform: translateY(0);
   }
-   
+  
   #splitscreen > .section.active ~ .section .section__half--light {
     transform: translateY(-100%);
+    color: transparent;
   }
-   
+  
   #splitscreen > .section.active ~ .section .section__half--dark {
     transform: translateY(100%);
+    color: transparent;
   }
