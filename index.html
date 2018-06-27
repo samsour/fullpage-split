@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,8 +9,14 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./css/jquery.fullPage.css" />
 </head>
+
 <body>
     <div id="splitscreen" class="main">
+        <div class="section">
+            <div class="section__half section__half--right">
+                <div class="section__counter">Right Side</div>
+            </div>
+        </div>
         <div class="section">
             <div class="section__half section__half--left">
                 <div class="section__counter">Left Side</div>
@@ -19,19 +26,29 @@
             </div>
         </div>
         <div class="section">
-            <div class="section__half section__half--left">
-                    <div class="section__counter">Left Side</div>
-                </div>
             <div class="section__half section__half--right">
-                    <div class="section__counter">Right Side</div>
-                </div>
+                <div class="section__counter">Right Side</div>
+            </div>
+            <div class="section__half section__half--left">
+                <div class="section__counter">Left Side</div>
+            </div>
         </div>
         <div class="section">
             <div class="section__half section__half--left">
-                    <div class="section__counter">Left Side</div>
-                </div>
+                <div class="section__counter">Left Side</div>
+            </div>
             <div class="section__half section__half--right">
                 <div class="section__counter">Right Side</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section__half section__half--right">
+                <div class="section__counter">Middle</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="section__half section__half--left">
+                <div class="section__counter">Middle</div>
             </div>
         </div>
     </div>
@@ -40,4 +57,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
