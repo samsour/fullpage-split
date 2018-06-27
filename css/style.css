@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  counter-reset: section;
+}
+
 #splitscreen {
     transform: translate3d(0px, 0px, 0px) !important;
   }
@@ -8,16 +17,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    counter-reset: section;
+    counter-increment: section;
   }
 
   #splitscreen > .section.active {
     z-index: 1;
   }
 
-  #splitscreen > .section__counter::before {
-    counter-increment: section;
-    content: "Section " counter(section) ": ";
+  .section__counter::before {
+    display: block;
+    content: counter(section);
+    text-align: center;
+    font-size: 50px;
   }
 
   #splitscreen > .section .section__half--left, #splitscreen > .section .section__half--right {
