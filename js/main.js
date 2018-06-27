@@ -2,6 +2,10 @@ console.log("Loading...");
 
 $(document).ready(function () {
 	$('.splitscreen').fullpage({ verticalCentered: false });
-	$('.loader').fadeOut('slow');
-	$('.splitscreen').fadeIn('slow');
+	setTimeout( () => {
+		$('.loader').addClass('hidden');
+	}, 300);
+	setTimeout( () => {
+		$('.splitscreen').removeClass('hidden');
+	}, 600);
 });
