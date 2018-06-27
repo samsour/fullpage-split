@@ -31,7 +31,7 @@ body {
     font-size: 50px;
   }
 
-  #splitscreen > .section .section__half--left, #splitscreen > .section .section__half--right {
+  #splitscreen > .section .section__half--light, #splitscreen > .section .section__half--dark {
     flex: 1;
     backface-visibility: hidden;
     transition: all 1s ease 0s;
@@ -40,27 +40,27 @@ body {
     justify-content: center;
   }
 
-#splitscreen > .section .section__half--left {
+#splitscreen > .section .section__half--light {
     color: #000;
     background: #fff;
     transform: translateY(100%);
     
   }
    
-  #splitscreen > .section .section__half--right {
+  #splitscreen > .section .section__half--dark {
     color: #fff;
     background: #000;
     transform: translateY(-100%);
   }
    
-  #splitscreen > .section.active .section__half--left, #splitscreen > .section.active .section__half--right  {
+  #splitscreen > .section.active .section__half--light, #splitscreen > .section.active .section__half--dark  {
     transform: translateY(0);
   }
    
-  #splitscreen > .section.active ~ .section .section__half--left {
+  #splitscreen > .section.active ~ .section .section__half--light {
     transform: translateY(-100%);
   }
    
-  #splitscreen > .section.active ~ .section .section__half--right {
+  #splitscreen > .section.active ~ .section .section__half--dark {
     transform: translateY(100%);
   }
