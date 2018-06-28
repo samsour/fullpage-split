@@ -1,8 +1,6 @@
 {
-    "name": "fullpage-split",
+    "name": "es6-setup",
     "version": "1.0.0",
-    "repository": "https://github.com/samsour/fullpage-split.git",
-    "author": "samsour <sam.sauer@hotmail.de>",
     "description": "",
     "main": "main.js",
     "scripts": {
@@ -11,6 +9,7 @@
         "build": "gulp build",
         "build:production": "gulp build --production"
     },
+    "author": "",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.0.0-beta.39",
@@ -35,7 +34,7 @@
         "yargs": "^11.0.0"
     },
     "dependencies": {
-        "fullpage.js": "^3.0.1",
+        "fullpage.js": "^2.9.7",
         "jquery": "^3.3.1"
     }
 }

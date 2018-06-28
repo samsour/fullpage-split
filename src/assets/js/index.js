@@ -1,9 +1,11 @@
 import $ from 'jquery';
-import fullpage from 'fullpage.js';
+import * as fullpage from 'fullpage.js';
 
 $(document).ready(function () {
 
-	$('.splitscreen').fullpage({ verticalCentered: false });
+	$('.splitscreen').fullpage({
+		verticalCentered: false,
+	});
 
 	setTimeout( () => {
 		$('.loader').addClass('hidden');
