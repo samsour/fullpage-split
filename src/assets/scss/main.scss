@@ -106,16 +106,6 @@ body {
     display: block;
   }
 
-  .splitscreen > .section {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    counter-increment: section;
-  }
-
   .splitscreen > .section.active {
     z-index: 1;
   }
@@ -134,7 +124,9 @@ body {
     display: inherit;
     align-items: center;
     justify-content: center;
-    min-width: 300px;
+    min-width: 385px; // (Ipad/2)+1
+    position: relative;
+    overflow: hidden;
   }
 
 .splitscreen > .section .section__half--light {
@@ -162,3 +154,20 @@ body {
     transform: translateY(100%);
     color: transparent;
   }
+
+.section {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    counter-increment: section;
+
+  &__image {
+    
+    &--background {
+      height: 100%;
+    }
+  }
+}
