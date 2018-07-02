@@ -1,70 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 300;
-  counter-reset: section;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    counter-reset: section;
 }
 
 .hidden {
-  display: none;
-  opacity: 0;
-  visibility: hidden;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
 }
 
 /* Loader */
 
 .loader {
-  transition: 1s all;
-  z-index: 9999;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-}
-
-/* Infinity */
-// $len: 242.776657104492px;
-// $time: 1.6s;
-// #outline {
-//   stroke-dasharray: $len*0.01, $len;
-//   stroke-dashoffset: 0;
-//   animation: anim $time linear infinite;
-// }
-// @keyframes anim {
-//   12.5% {
-//     stroke-dasharray: $len*0.14, $len;
-//     stroke-dashoffset: -$len*0.11;
-//   }
-//   43.75% {
-//     stroke-dasharray: $len*0.35, $len;
-//     stroke-dashoffset: -$len*0.35;
-//   }
-//   100% {
-//     stroke-dasharray: $len*0.01, $len;
-//     stroke-dashoffset: -$len*0.99;
-//   }
-// }
-
-.check-out {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 2rem;
-  color: #fff;
+    transition: 1s all;
+    z-index: 9999;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
 }
 
 /* Signal */
@@ -85,17 +53,17 @@ body {
 }
 
 @keyframes pulsate {
-  0% {
-    transform: scale(.1);
-    opacity: 0.0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 0;
-  }
+    0% {
+        transform: scale(.1);
+        opacity: 0.0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
 }
 
 /* Splitscreen */
@@ -104,70 +72,71 @@ body {
     transition: 1s all;
     transform: translate3d(0px, 0px, 0px) !important;
     display: block;
-  }
 
-  .splitscreen > .section.active {
-    z-index: 1;
-  }
+    .section {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        counter-increment: section;
 
-  .section__counter::before {
-    display: block;
-    content: counter(section);
-    text-align: center;
-    font-size: 50px;
-  }
+        // Refactor
+        &.active {
+            z-index: 1;
 
-  .splitscreen > .section .section__half {
-    flex: 1;
-    backface-visibility: hidden;
-    transition: all 1s ease 0s;
-    display: inherit;
-    align-items: center;
-    justify-content: center;
-    min-width: 385px; // (Ipad/2)+1
-    position: relative;
-    overflow: hidden;
-  }
+            .section__half {
+                transform: translateY(0);
+            }
+            ~ .section {
+                .section__half--light {
+                    transform: translateY(-100%);
+                    color: transparent;
+                }
+                .section__half--dark {
+                    transform: translateY(100%);
+                    color: transparent;
+                }
+            }
+        }
 
-.splitscreen > .section .section__half--light {
-    background: #fff;
-    transform: translateY(100%);
-    
-  }
-   
-  .splitscreen > .section .section__half--dark {
-    color: #fff;
-    background: #000;
-    transform: translateY(-100%);
-  }
-   
-  .splitscreen > .section.active .section__half--light, .splitscreen > .section.active .section__half--dark  {
-    transform: translateY(0);
-  }
-  
-  .splitscreen > .section.active ~ .section .section__half--light {
-    transform: translateY(-100%);
-    color: transparent;
-  }
-  
-  .splitscreen > .section.active ~ .section .section__half--dark {
-    transform: translateY(100%);
-    color: transparent;
-  }
+        &__half {
+            flex: 1;
+            backface-visibility: hidden;
+            transition: all 1s ease 0s;
+            display: inherit;
+            align-items: center;
+            justify-content: center;
+            min-width: 385px; // (Ipad/2)+1
+            position: relative;
+            overflow: hidden;
 
-.section {
-    display: flex;
-    flex-wrap: wrap-reverse;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    counter-increment: section;
+            &--light {
+                background: #fff;
+                transform: translateY(100%);
+            }
 
-  &__image {
-    
-    &--background {
-      height: 100%;
+            &--dark {
+                color: #fff;
+                background: #000;
+                transform: translateY(-100%);
+            }
+        }
+
+        &__counter {
+            &::before {
+                display: block;
+                content: counter(section);
+                text-align: center;
+                font-size: 50px;
+            }
+        }
+
+        &__image {
+            &--background {
+                height: 100%;
+            }
+        }
     }
-  }
 }
