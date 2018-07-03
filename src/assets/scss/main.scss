@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+@mixin breakpoint($breakpoint,$direction: $media-direction) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (#{$direction}-width: #{map-get($breakpoints, $breakpoint)}) {
+            @content;
+        }
+    } @else if unitless($breakpoint) {
+        $breakpoint: $breakpoint + 0px;
+        @media (#{$direction}-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+// Breakpoints
+$media-direction: max; // desktop first
+$breakpoints: ('default': '', 'small': 767px, 'medium': 920px, 'large': 1200px) !default;
+
 * {
     margin: 0;
     padding: 0;
@@ -30,9 +47,9 @@ body {
     width: 100%;
     height: 100%;
     display: inline-flex;
+    background: #fff;
     justify-content: center;
     align-items: center;
-    background: #fff;
 }
 
 /* Signal */
@@ -87,15 +104,15 @@ body {
             z-index: 1;
 
             .section__half {
-                transform: translateY(0);
+                transform: translateX(0);
             }
             ~ .section .section__half {
                 &--light {
-                    transform: translateY(-100%);
+                    transform: translateX(-100%);
                     color: transparent;
                 }
                 &--dark {
-                    transform: translateY(100%);
+                    transform: translateX(100%);
                     color: transparent;
                 }
             }
@@ -108,19 +125,19 @@ body {
             display: inherit;
             align-items: center;
             justify-content: center;
-            min-width: 385px; // (Ipad/2)+1
+            min-width: 300px;
             position: relative;
             overflow: hidden;
 
             &--light {
                 background: #fff;
-                transform: translateY(99%);
+                transform: translateX(100%);
             }
 
             &--dark {
                 color: #fff;
                 background: #000;
-                transform: translateY(-99%);
+                transform: translateX(-100%);
             }
         }
 
