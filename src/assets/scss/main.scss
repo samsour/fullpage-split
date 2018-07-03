@@ -89,12 +89,12 @@ body {
             .section__half {
                 transform: translateY(0);
             }
-            ~ .section {
-                .section__half--light {
+            ~ .section .section__half {
+                &--light {
                     transform: translateY(-100%);
                     color: transparent;
                 }
-                .section__half--dark {
+                &--dark {
                     transform: translateY(100%);
                     color: transparent;
                 }
@@ -114,13 +114,13 @@ body {
 
             &--light {
                 background: #fff;
-                transform: translateY(100%);
+                transform: translateY(99%);
             }
 
             &--dark {
                 color: #fff;
                 background: #000;
-                transform: translateY(-100%);
+                transform: translateY(-99%);
             }
         }
 
