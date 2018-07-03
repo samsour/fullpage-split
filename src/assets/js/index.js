@@ -5,6 +5,10 @@ $(document).ready(function () {
 
 	$('.splitscreen').fullpage({
 		verticalCentered: false,
+		navigation: true,
+		onLeave: function(origin, destination, direction){
+			randomBackgroundColor();
+		}
 	});
 
 	setTimeout( () => {
@@ -16,3 +20,11 @@ $(document).ready(function () {
 	}, 600);
 
 });
+
+function randomBackgroundColor() {
+	const colors = ["#FFDE03","#FF0266","#0336FF","03DAC5"];
+
+	let rand = colors[Math.floor(Math.random() * colors.length)];
+
+	$('body').css('background',rand);
+}
