@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 
 @mixin breakpoint($breakpoint,$direction: $media-direction) {
     @if map-has-key($breakpoints, $breakpoint) {
@@ -14,8 +14,8 @@
 }
 
 // Breakpoints
-$media-direction: max; // desktop first
-$breakpoints: ('default': '', 'small': 767px, 'medium': 920px, 'large': 1200px) !default;
+$media-direction: min; // Mobile first
+$breakpoints: ('default': '', 'small': 600px, 'medium': 920px, 'large': 1200px) !default;
 
 * {
     margin: 0;
@@ -24,7 +24,7 @@ $breakpoints: ('default': '', 'small': 767px, 'medium': 920px, 'large': 1200px) 
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 18px;
     font-weight: 300;
     counter-reset: section;
@@ -104,15 +104,16 @@ body {
             z-index: 1;
 
             .section__half {
-                transform: translateX(0);
+                transform: translateY(0);
+                opacity: 1;
             }
             ~ .section .section__half {
                 &--light {
-                    transform: translateX(-100%);
+                    transform: translateY(-100%);
                     color: transparent;
                 }
                 &--dark {
-                    transform: translateX(100%);
+                    transform: translateY(100%);
                     color: transparent;
                 }
             }
@@ -121,23 +122,38 @@ body {
         &__half {
             flex: 1;
             backface-visibility: hidden;
-            transition: all 1s ease 0s;
+            transition: all 1s ease-in-out 0s;
             display: inherit;
             align-items: center;
             justify-content: center;
             min-width: 300px;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+
+            &:not(:only-child) {
+                height: 50%;
+
+                @include breakpoint(small) {
+                    height: 100%;
+                    width: 50%;
+                }
+            }
+
+            @include breakpoint(small) {
+                opacity: 1;
+            }
 
             &--light {
                 background: #fff;
-                transform: translateX(100%);
+                color: #222;
+                transform: translateY(100%);
             }
 
             &--dark {
                 color: #fff;
                 background: #000;
-                transform: translateX(-100%);
+                transform: translateY(-100%);
             }
         }
 
@@ -154,6 +170,11 @@ body {
             &--background {
                 height: 100%;
             }
+        }
+
+        &__copy {
+            margin: 30px;
+            text-align: center;
         }
     }
 }
